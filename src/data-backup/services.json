@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Architecture & Design",
+    "shortDescription": "Crafting iconic structures that define skylines and stand the test of time.",
+    "fullDescription": "Our architecture and design practice blends aesthetic vision with technical precision. From concept to completion, we deliver buildings that are not only visually striking but deeply responsive to their environment and communities.",
+    "features": [
+      { "name": "Concept Development", "meaning": "Translating vision into buildable reality", "icon": "mdi:lightbulb-outline" },
+      { "name": "3D Visualization", "meaning": "Photorealistic renders before a single brick is laid", "icon": "mdi:cube-outline" },
+      { "name": "Technical Drawings", "meaning": "Precision documentation for contractors and regulators", "icon": "mdi:draw" },
+      { "name": "Site Supervision", "meaning": "On-site quality control throughout construction", "icon": "mdi:hard-hat" }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+    "buttonTitle": "Explore Architecture",
+    "order": 1
+  },
+  {
+    "title": "Civil Engineering",
+    "shortDescription": "Engineering the infrastructure backbone of modern communities.",
+    "fullDescription": "From roads to bridges, drainage systems to structural foundations, our civil engineering team brings rigorous analysis and sustainable thinking to every project — ensuring safety, longevity, and environmental responsibility.",
+    "features": [
+      { "name": "Structural Analysis", "meaning": "Ensuring integrity under all load conditions", "icon": "mdi:bridge" },
+      { "name": "Road Design", "meaning": "Safe, efficient circulation for people and vehicles", "icon": "mdi:road-variant" },
+      { "name": "Drainage Systems", "meaning": "Managing water flow to prevent flooding and erosion", "icon": "mdi:water-pump" },
+      { "name": "Geotechnical Assessment", "meaning": "Understanding the ground before we build on it", "icon": "mdi:terrain" }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=2070&auto=format&fit=crop",
+    "buttonTitle": "Explore Engineering",
+    "order": 2
+  },
+  {
+    "title": "Masterplanning",
+    "shortDescription": "Shaping how cities grow — sustainably, equitably, and beautifully.",
+    "fullDescription": "Masterplanning is the art of envisioning a place before it exists. We work with developers, governments, and communities to create spatial frameworks that guide growth, protect ecology, and build identity at the urban scale.",
+    "features": [
+      { "name": "Land Use Planning", "meaning": "Zoning that balances density with livability", "icon": "mdi:map-outline" },
+      { "name": "Green Corridors", "meaning": "Integrating nature into the urban fabric", "icon": "mdi:tree-outline" },
+      { "name": "Community Engagement", "meaning": "Ensuring residents shape their own neighbourhoods", "icon": "mdi:account-group-outline" },
+      { "name": "Phasing Strategy", "meaning": "Sequencing development for financial viability", "icon": "mdi:chart-timeline-variant" }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1518005020951-eccb494ad742?q=80&w=1955&auto=format&fit=crop",
+    "buttonTitle": "Explore Masterplanning",
+    "order": 3
+  },
+  {
+    "title": "Interior Design",
+    "shortDescription": "Crafting interiors that are as functional as they are unforgettable.",
+    "fullDescription": "Great interiors are experiences, not just spaces. Our interior design team marries local craft traditions with contemporary luxury — specifying materials, furniture, lighting, and finishes that create spaces people never want to leave.",
+    "features": [
+      { "name": "Space Planning", "meaning": "Optimising every square metre for how people live", "icon": "mdi:floor-plan" },
+      { "name": "Material Sourcing", "meaning": "Curating finishes from local and global suppliers", "icon": "mdi:palette-swatch-outline" },
+      { "name": "Lighting Design", "meaning": "Layered light that sets the perfect mood", "icon": "mdi:ceiling-light-outline" },
+      { "name": "Furniture Specification", "meaning": "Bespoke and curated pieces that complete the narrative", "icon": "mdi:sofa-outline" }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop",
+    "buttonTitle": "Explore Interiors",
+    "order": 4
+  }
+]

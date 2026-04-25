@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Yves Karangwa",
+    "role": "MD & Co-Founder",
+    "bio": "15 years of experience leading major commercial developments across East Africa.",
+    "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop",
+    "order": 1
+  },
+  {
+    "name": "Jean Karangwa",
+    "role": "MD & Co-Founder",
+    "bio": "12 years of experience leading major commercial developments across East Africa.",
+    "imageUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop",
+    "order": 2
+  },
+  {
+    "name": "Tony Karangwa",
+    "role": "MD & Co-Founder",
+    "bio": "10 years of experience leading major commercial developments across East Africa.",
+    "imageUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop",
+    "order": 3
+  }
+]
