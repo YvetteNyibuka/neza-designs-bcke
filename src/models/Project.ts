@@ -8,7 +8,7 @@ export type ProjectCategory =
   | 'Masterplanning'
   | 'Interior';
 
-export type ProjectStatus = 'Completed' | 'Ongoing';
+export type ProjectStatus = 'Completed' | 'Ongoing' | 'Handed Over' | 'Consulted';
 
 export interface IProject extends Document {
   slug: string;
@@ -43,7 +43,7 @@ const ProjectSchema = new Schema<IProject>(
     status: {
       type: String,
       required: true,
-      enum: ['Completed', 'Ongoing'],
+      enum: ['Completed', 'Ongoing', 'Handed Over', 'Consulted'],
       default: 'Completed',
     },
     description: { type: String, required: true },

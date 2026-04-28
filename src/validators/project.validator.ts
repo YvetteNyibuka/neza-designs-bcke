@@ -8,7 +8,7 @@ const PROJECT_CATEGORIES = [
   'Interior',
 ] as const;
 
-const PROJECT_STATUSES = ['Completed', 'Ongoing'] as const;
+const PROJECT_STATUSES = ['Completed', 'Ongoing', 'Handed Over', 'Consulted'] as const;
 
 export const createProjectSchema = z.object({
   slug: z.string().min(1).toLowerCase().optional(),
