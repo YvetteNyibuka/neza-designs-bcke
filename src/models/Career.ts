@@ -15,8 +15,6 @@ export interface ICareer extends Document {
   description: string;
   requirements: string[];
   responsibilities: string[];
-  applyEmail?: string;
-  applyUrl?: string;
   deadline?: Date;
   status: CareerStatus;
   featured: boolean;
@@ -46,8 +44,6 @@ const CareerSchema = new Schema<ICareer>(
     description: { type: String, required: true },
     requirements: [{ type: String, trim: true }],
     responsibilities: [{ type: String, trim: true }],
-    applyEmail: { type: String, trim: true },
-    applyUrl: { type: String, trim: true },
     deadline: { type: Date },
     status: { type: String, required: true, enum: ['Open', 'Closed'], default: 'Open' },
     featured: { type: Boolean, default: false },

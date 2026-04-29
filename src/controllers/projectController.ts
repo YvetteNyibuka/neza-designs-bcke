@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { asyncHandler } from '../utils/asyncHandler';
 import { sendSuccess, sendCreated, sendNotFound } from '../utils/response';
 import * as projectService from '../services/projectService';
+import { notifyProjectCompleted } from '../services/newsletterService';
 
 export const getProjects = asyncHandler(async (req: Request, res: Response) => {
   const result = await projectService.getAllProjects(req.query as any);
@@ -20,8 +21,23 @@ export const createProject = asyncHandler(async (req: Request, res: Response) =>
 });
 
 export const updateProject = asyncHandler(async (req: Request, res: Response) => {
+  const prevProject = await projectService.getProjectBySlug(req.params['slug'] as string);
   const project = await projectService.updateProject(req.params['slug'] as string, req.body);
   if (!project) { sendNotFound(res, 'Project'); return; }
+
+  // Notify subscribers when a project is marked Completed
+  const wasNotCompleted = prevProject && (prevProject as any).status !== 'Completed';
+  if (wasNotCompleted && project.status === 'Completed') {
+    notifyProjectCompleted({
+      title: project.title,
+      slug: project.slug,
+      description: project.description,
+      imageUrl: project.imageUrl,
+      location: project.location,
+      category: project.category,
+    }).catch(() => {/* suppress */});
+  }
+
   sendSuccess(res, 'Project updated', project);
 });
 

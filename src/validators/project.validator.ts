@@ -2,10 +2,9 @@ import { z } from 'zod';
 
 const PROJECT_CATEGORIES = [
   'Architecture',
-  'Civil Engineering',
+  'Construction',
   'Project Management',
-  'Masterplanning',
-  'Interior',
+  'Land Acquisition',
 ] as const;
 
 const PROJECT_STATUSES = ['Completed', 'Ongoing', 'Handed Over', 'Consulted'] as const;

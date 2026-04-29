@@ -9,7 +9,6 @@ const featureSchema = z.object({
 export const createServiceSchema = z.object({
   title: z.string().min(2).max(200),
   shortDescription: z.string().min(10).max(300),
-  fullDescription: z.string().min(20),
   features: z.array(featureSchema).min(1).max(20),
   imageUrl: z.string().url().optional(),
   buttonTitle: z.string().default('Learn More'),

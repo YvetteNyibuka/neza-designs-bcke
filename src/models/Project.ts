@@ -3,10 +3,9 @@ import { COLLECTIONS } from '../constants/collections';
 
 export type ProjectCategory =
   | 'Architecture'
-  | 'Civil Engineering'
+  | 'Construction'
   | 'Project Management'
-  | 'Masterplanning'
-  | 'Interior';
+  | 'Land Acquisition';
 
 export type ProjectStatus = 'Completed' | 'Ongoing' | 'Handed Over' | 'Consulted';
 
@@ -34,10 +33,9 @@ const ProjectSchema = new Schema<IProject>(
       required: true,
       enum: [
         'Architecture',
-        'Civil Engineering',
+        'Construction',
         'Project Management',
-        'Masterplanning',
-        'Interior',
+        'Land Acquisition',
       ],
     },
     status: {

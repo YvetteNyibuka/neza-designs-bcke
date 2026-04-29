@@ -9,6 +9,7 @@ import { Project } from '../models/Project';
 import { BlogPost } from '../models/BlogPost';
 import { TeamMember } from '../models/TeamMember';
 import { Service } from '../models/Service';
+import { Career } from '../models/Career';
 
 function readJson<T>(filename: string): T[] {
   const filePath = path.join(__dirname, '..', 'data-backup', filename);
@@ -46,6 +47,7 @@ async function seed(): Promise<void> {
   await seedCollection('BlogPosts', BlogPost, readJson('posts.json'), 'slug');
   await seedCollection('TeamMembers', TeamMember, readJson('team.json'), 'name');
   await seedCollection('Services', Service, readJson('services.json'), 'title');
+  await seedCollection('Careers', Career, readJson('careers.json'), 'slug');
 
   console.log('\nDone.');
   await mongoose.disconnect();

@@ -14,8 +14,6 @@ export const createCareerSchema = z.object({
   description: z.string().min(30),
   requirements: z.array(z.string().min(2)).default([]),
   responsibilities: z.array(z.string().min(2)).default([]),
-  applyEmail: z.string().email().optional(),
-  applyUrl: z.string().url().optional(),
   deadline: z.string().datetime().optional(),
   status: z.enum(CAREER_STATUS).default('Open'),
   featured: z.boolean().optional().default(false),

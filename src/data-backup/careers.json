@@ -1,0 +1,169 @@
+[
+  {
+    "slug": "senior-graphic-designer",
+    "title": "Senior Graphic Designer",
+    "department": "Design",
+    "location": "Kigali, Rwanda",
+    "employmentType": "Full-time",
+    "experienceLevel": "Senior",
+    "description": "We are looking for a talented and experienced Senior Graphic Designer to join our creative team at Neza Designs. You will lead visual design initiatives for our clients across branding, print, and digital media, ensuring every output reflects our commitment to bold and purposeful design.",
+    "requirements": [
+      "5+ years of professional graphic design experience",
+      "Expert proficiency in Adobe Creative Suite (Illustrator, Photoshop, InDesign)",
+      "Strong portfolio demonstrating brand identity and visual design work",
+      "Experience with print production and digital media design",
+      "Excellent understanding of typography, colour theory, and layout",
+      "Ability to manage multiple projects and meet deadlines"
+    ],
+    "responsibilities": [
+      "Lead end-to-end brand identity projects for clients",
+      "Design marketing materials including brochures, banners, and social media assets",
+      "Collaborate with project managers and clients to understand design briefs",
+      "Mentor junior designers and review their work",
+      "Ensure all designs meet brand guidelines and quality standards",
+      "Present design concepts and incorporate client feedback"
+    ],
+    "status": "Open",
+    "featured": true,
+    "isDeleted": false
+  },
+  {
+    "slug": "ui-ux-designer",
+    "title": "UI/UX Designer",
+    "department": "Design",
+    "location": "Kigali, Rwanda",
+    "employmentType": "Full-time",
+    "experienceLevel": "Mid",
+    "description": "Neza Designs is seeking a creative and user-focused UI/UX Designer to craft intuitive digital experiences. You will work on web and mobile interfaces, transforming complex problems into elegant and user-friendly designs.",
+    "requirements": [
+      "3+ years of UI/UX design experience",
+      "Proficiency in Figma or Adobe XD",
+      "Strong understanding of user-centred design principles",
+      "Experience conducting user research and usability testing",
+      "Knowledge of responsive and mobile-first design",
+      "Portfolio showcasing web and mobile design work"
+    ],
+    "responsibilities": [
+      "Design wireframes, prototypes, and high-fidelity mockups",
+      "Conduct user research to inform design decisions",
+      "Collaborate with developers to ensure accurate implementation",
+      "Define and maintain design systems and component libraries",
+      "Present design concepts to clients and stakeholders",
+      "Iterate based on user feedback and testing results"
+    ],
+    "status": "Open",
+    "featured": true,
+    "isDeleted": false
+  },
+  {
+    "slug": "web-developer",
+    "title": "Web Developer",
+    "department": "Technology",
+    "location": "Kigali, Rwanda",
+    "employmentType": "Full-time",
+    "experienceLevel": "Mid",
+    "description": "We are hiring a skilled Web Developer to build and maintain high-quality websites and web applications for our clients. You will work closely with the design team to bring visuals to life with clean, performant code.",
+    "requirements": [
+      "3+ years of front-end or full-stack web development experience",
+      "Proficiency in HTML, CSS, JavaScript/TypeScript",
+      "Experience with React, Next.js or similar frameworks",
+      "Familiarity with Node.js and RESTful APIs",
+      "Understanding of web performance optimisation",
+      "Version control with Git"
+    ],
+    "responsibilities": [
+      "Develop responsive websites and web applications from design mockups",
+      "Integrate with backend APIs and third-party services",
+      "Optimise web applications for performance and SEO",
+      "Collaborate with designers and project managers",
+      "Write clean, maintainable, and well-documented code",
+      "Participate in code reviews and contribute to best practices"
+    ],
+    "status": "Open",
+    "featured": false,
+    "isDeleted": false
+  },
+  {
+    "slug": "project-manager",
+    "title": "Project Manager",
+    "department": "Operations",
+    "location": "Kigali, Rwanda",
+    "employmentType": "Full-time",
+    "experienceLevel": "Mid",
+    "description": "Neza Designs is looking for a proactive and organised Project Manager to oversee client projects from inception to delivery. You will ensure projects are completed on time, within scope, and to the highest standard.",
+    "requirements": [
+      "3+ years of project management experience, preferably in a creative agency",
+      "PMP or PRINCE2 certification is a plus",
+      "Strong communication and interpersonal skills",
+      "Experience with project management tools (Trello, Asana, or similar)",
+      "Ability to manage multiple projects simultaneously",
+      "Problem-solving mindset and attention to detail"
+    ],
+    "responsibilities": [
+      "Plan and manage project timelines, resources, and budgets",
+      "Act as the primary point of contact for clients throughout the project lifecycle",
+      "Coordinate between design, development, and content teams",
+      "Identify and mitigate project risks",
+      "Prepare project reports and status updates for clients",
+      "Ensure deliverables meet quality standards before client handover"
+    ],
+    "status": "Open",
+    "featured": false,
+    "isDeleted": false
+  },
+  {
+    "slug": "content-and-social-media-specialist",
+    "title": "Content & Social Media Specialist",
+    "department": "Marketing",
+    "location": "Kigali, Rwanda",
+    "employmentType": "Full-time",
+    "experienceLevel": "Entry",
+    "description": "We are seeking a creative and data-driven Content & Social Media Specialist to manage content creation and social media presence for Neza Designs and our clients. You will craft compelling stories that connect brands with their audiences.",
+    "requirements": [
+      "1–3 years of experience in content creation or social media management",
+      "Excellent written and verbal communication skills",
+      "Experience managing social media platforms (Instagram, LinkedIn, Twitter/X, Facebook)",
+      "Basic graphic design skills (Canva or Adobe tools)",
+      "Understanding of SEO and content marketing principles",
+      "Analytical mindset with ability to interpret engagement metrics"
+    ],
+    "responsibilities": [
+      "Develop and execute content calendars for social media platforms",
+      "Write engaging copy for posts, blogs, newsletters, and campaigns",
+      "Create visual content in collaboration with the design team",
+      "Monitor and respond to community engagement",
+      "Track and report on content performance metrics",
+      "Stay up to date with industry trends and platform updates"
+    ],
+    "status": "Open",
+    "featured": false,
+    "isDeleted": false
+  },
+  {
+    "slug": "motion-graphics-designer",
+    "title": "Motion Graphics Designer",
+    "department": "Design",
+    "location": "Kigali, Rwanda",
+    "employmentType": "Contract",
+    "experienceLevel": "Mid",
+    "description": "Neza Designs is looking for a Motion Graphics Designer to create engaging animated content for client campaigns, social media, and presentations. You bring designs to life with movement and storytelling.",
+    "requirements": [
+      "3+ years of motion graphics or animation experience",
+      "Proficiency in Adobe After Effects and Premiere Pro",
+      "Strong understanding of timing, pacing, and visual storytelling",
+      "Experience creating content for social media and digital platforms",
+      "Knowledge of 3D animation (Cinema 4D) is a plus",
+      "Portfolio demonstrating motion graphics and animation work"
+    ],
+    "responsibilities": [
+      "Create animated graphics for social media, video, and presentations",
+      "Collaborate with the design team to animate static assets",
+      "Produce motion content aligned with client brand guidelines",
+      "Edit and post-produce video content as needed",
+      "Manage multiple animation projects within tight deadlines"
+    ],
+    "status": "Open",
+    "featured": false,
+    "isDeleted": false
+  }
+]
