@@ -6,6 +6,9 @@ export const COLLECTIONS = {
   SERVICES: 'services',
   TEAM_MEMBERS: 'teammembers',
   CONTACTS: 'contacts',
+  CAREERS: 'careers',
+  PUBLICATIONS: 'publications',
+    JOB_APPLICATIONS: 'jobapplications',
   OTPS: 'otps',
   SITE_SETTINGS: 'sitesettings',
 } as const;

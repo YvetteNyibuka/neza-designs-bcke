@@ -10,7 +10,6 @@ export interface IServiceFeature {
 export interface IService extends Document {
   title: string;
   shortDescription: string;
-  fullDescription: string;
   features: IServiceFeature[];
   imageUrl: string;
   buttonTitle: string;
@@ -24,7 +23,6 @@ const ServiceSchema = new Schema<IService>(
   {
     title: { type: String, required: true, trim: true },
     shortDescription: { type: String, required: true },
-    fullDescription: { type: String, required: true },
     features: [
       {
         name: { type: String, required: true },
