@@ -9,6 +9,9 @@ import uploadRoutes from './upload.routes';
 import settingsRoutes from './settings.routes';
 import analyticsRoutes from './analytics.routes';
 import healthRoutes from './health.routes';
+import careerRoutes from './career.routes';
+import publicationRoutes from './publication.routes';
+import newsletterRoutes from './newsletter.routes';
 
 const v1Router = Router();
 
@@ -22,5 +25,8 @@ v1Router.use('/contact', contactRoutes);
 v1Router.use('/upload', uploadRoutes);
 v1Router.use('/settings', settingsRoutes);
 v1Router.use('/analytics', analyticsRoutes);
+v1Router.use('/careers', careerRoutes);
+v1Router.use('/publications', publicationRoutes);
+v1Router.use('/newsletter', newsletterRoutes);
 
 export default v1Router;

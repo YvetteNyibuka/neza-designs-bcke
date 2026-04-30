@@ -3,12 +3,11 @@ import { COLLECTIONS } from '../constants/collections';
 
 export type ProjectCategory =
   | 'Architecture'
-  | 'Civil Engineering'
+  | 'Construction'
   | 'Project Management'
-  | 'Masterplanning'
-  | 'Interior';
+  | 'Land Acquisition';
 
-export type ProjectStatus = 'Completed' | 'Ongoing';
+export type ProjectStatus = 'Completed' | 'Ongoing' | 'Handed Over' | 'Consulted';
 
 export interface IProject extends Document {
   slug: string;
@@ -34,16 +33,15 @@ const ProjectSchema = new Schema<IProject>(
       required: true,
       enum: [
         'Architecture',
-        'Civil Engineering',
+        'Construction',
         'Project Management',
-        'Masterplanning',
-        'Interior',
+        'Land Acquisition',
       ],
     },
     status: {
       type: String,
       required: true,
-      enum: ['Completed', 'Ongoing'],
+      enum: ['Completed', 'Ongoing', 'Handed Over', 'Consulted'],
       default: 'Completed',
     },
     description: { type: String, required: true },

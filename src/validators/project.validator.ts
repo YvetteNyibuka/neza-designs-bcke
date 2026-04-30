@@ -2,13 +2,12 @@ import { z } from 'zod';
 
 const PROJECT_CATEGORIES = [
   'Architecture',
-  'Civil Engineering',
+  'Construction',
   'Project Management',
-  'Masterplanning',
-  'Interior',
+  'Land Acquisition',
 ] as const;
 
-const PROJECT_STATUSES = ['Completed', 'Ongoing'] as const;
+const PROJECT_STATUSES = ['Completed', 'Ongoing', 'Handed Over', 'Consulted'] as const;
 
 export const createProjectSchema = z.object({
   slug: z.string().min(1).toLowerCase().optional(),

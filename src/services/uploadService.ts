@@ -35,3 +35,30 @@ export async function uploadImage(
 export async function deleteImage(publicId: string): Promise<void> {
   await cloudinary.uploader.destroy(publicId);
 }
+
+export async function uploadFile(
+  fileBuffer: Buffer,
+  folder: string,
+  originalName: string
+): Promise<UploadResult> {
+  return new Promise((resolve, reject) => {
+    const uploadOptions: Record<string, unknown> = {
+      folder: `neza-designs/${folder}`,
+      resource_type: 'raw',
+      public_id: `${Date.now()}-${originalName.replace(/[^a-zA-Z0-9._-]/g, '_')}`,
+      use_filename: false,
+      access_mode: 'public',
+      type: 'upload',
+    };
+
+    cloudinary.uploader
+      .upload_stream(uploadOptions, (error, result) => {
+        if (error || !result) {
+          reject(createError('File upload failed', HTTP_STATUS.INTERNAL_SERVER_ERROR));
+          return;
+        }
+        resolve({ url: result.secure_url, publicId: result.public_id });
+      })
+      .end(fileBuffer);
+  });
+}

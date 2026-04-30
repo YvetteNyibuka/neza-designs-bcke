@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { asyncHandler } from '../utils/asyncHandler';
 import { sendSuccess, sendCreated, sendNotFound } from '../utils/response';
 import * as postService from '../services/postService';
+import { notifyNewPost } from '../services/newsletterService';
 
 export const getPosts = asyncHandler(async (req: Request, res: Response) => {
   const result = await postService.getAllPosts(req.query as any);
@@ -16,6 +17,12 @@ export const getPost = asyncHandler(async (req: Request, res: Response) => {
 
 export const createPost = asyncHandler(async (req: Request, res: Response) => {
   const post = await postService.createPost(req.body);
+  notifyNewPost({
+    title: post.title,
+    slug: post.slug,
+    excerpt: (post as any).excerpt,
+    category: (post as any).category,
+  }).catch(() => {/* suppress */});
   sendCreated(res, 'Post created', post);
 });
 
