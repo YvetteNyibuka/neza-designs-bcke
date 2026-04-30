@@ -11,16 +11,9 @@ import { logger } from './utils/logger';
 
 const app = express();
 
-// Required behind hosting proxies (Render/Vercel) so rate-limit uses real client IP.
-const shouldTrustProxy =
-  env.isProd ||
-  Boolean(process.env.RENDER) ||
-  Boolean(process.env.RENDER_EXTERNAL_URL) ||
-  Boolean(process.env.VERCEL);
-
-if (shouldTrustProxy) {
-  app.set('trust proxy', 1);
-}
+// This API is deployed behind reverse proxies (Render/Vercel),
+// and rate limiter depends on forwarded client IPs.
+app.set('trust proxy', 1);
 
 // Security headers
 app.use(helmet());

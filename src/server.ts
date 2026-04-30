@@ -13,6 +13,7 @@ async function start(): Promise<void> {
   const server = app.listen(env.PORT, () => {
     logger.info(`Server running on http://localhost:${env.PORT} [${env.NODE_ENV}]`);
     logger.info(`API docs: http://localhost:${env.PORT}/api/v1/health`);
+    logger.info(`Express trust proxy: ${String(app.get('trust proxy'))}`);
   });
 
   // Graceful shutdown
