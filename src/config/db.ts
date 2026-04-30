@@ -2,11 +2,18 @@ import mongoose from 'mongoose';
 import { env } from './env';
 import { logger } from '../utils/logger';
 
+// Cache connection across serverless invocations (Vercel / cold starts)
+let isConnected = false;
+
 export async function connectDB(): Promise<void> {
+  if (isConnected) return;
+
   try {
     await mongoose.connect(env.MONGODB_URI, {
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 20000,
     });
+    isConnected = true;
     logger.info('MongoDB connected successfully');
   } catch (error) {
     logger.error('MongoDB connection failed:', error);
