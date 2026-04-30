@@ -4,8 +4,18 @@ import fs from 'fs';
 import { env } from '../config/env';
 
 const logsDir = path.join(__dirname, '../../logs');
-if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir, { recursive: true });
+const isServerlessRuntime = Boolean(process.env.VERCEL) || Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME);
+
+let canWriteLogsToDisk = false;
+if (!isServerlessRuntime) {
+  try {
+    if (!fs.existsSync(logsDir)) {
+      fs.mkdirSync(logsDir, { recursive: true });
+    }
+    canWriteLogsToDisk = true;
+  } catch {
+    canWriteLogsToDisk = false;
+  }
 }
 
 const { combine, timestamp, errors, json, colorize, printf } = winston.format;
@@ -26,14 +36,21 @@ const prodFormat = combine(timestamp(), errors({ stack: true }), json());
 export const logger = winston.createLogger({
   level: env.isDev ? 'debug' : 'info',
   format: env.isDev ? devFormat : prodFormat,
-  transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({
-      filename: path.join(logsDir, 'error.log'),
-      level: 'error',
-    }),
-    new winston.transports.File({
-      filename: path.join(logsDir, 'combined.log'),
-    }),
-  ],
+  transports: (() => {
+    const transports: winston.transport[] = [new winston.transports.Console()];
+
+    if (canWriteLogsToDisk) {
+      transports.push(
+        new winston.transports.File({
+          filename: path.join(logsDir, 'error.log'),
+          level: 'error',
+        }),
+        new winston.transports.File({
+          filename: path.join(logsDir, 'combined.log'),
+        })
+      );
+    }
+
+    return transports;
+  })(),
 });
