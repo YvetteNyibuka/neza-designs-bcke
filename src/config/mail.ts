@@ -6,10 +6,11 @@ let transporter: Transporter;
 
 export function getMailTransporter(): Transporter {
   if (!transporter) {
-    const transportOptions: SMTPTransport.Options = {
+    const transportOptions: SMTPTransport.Options & { family?: number } = {
       host: env.SMTP_HOST,
       port: env.SMTP_PORT,
       secure: env.SMTP_PORT === 465,
+      family: 4, // Force IPv4 — Render free tier cannot route outbound IPv6
       name: 'nezadesigns.com',
       connectionTimeout: 10000,
       greetingTimeout: 10000,
