@@ -43,12 +43,12 @@ function parseDeviceName(userAgent?: string): string {
   return 'Unknown device';
 }
 
-async function sendLoginAlert(user: IUser, meta?: SessionMeta): Promise<void> {
+function sendLoginAlert(user: IUser, meta?: SessionMeta): void {
   if (!user.loginAlerts) return;
   const device = parseDeviceName(meta?.userAgent);
   const ipAddress = meta?.ipAddress || 'Unknown IP';
 
-  await sendMail({
+  void sendMail({
     to: user.email,
     subject: 'New login detected on your account',
     html: `
@@ -145,7 +145,7 @@ export async function verifyOtp(
   await user.save();
 
   const tokens = await issueTokens(user, meta);
-  await sendLoginAlert(user, meta);
+  sendLoginAlert(user, meta);
   return tokens;
 }
 
@@ -176,7 +176,7 @@ export async function loginUser(
 
   user.lastLogin = new Date();
   const tokens = await issueTokens(user, meta);
-  await sendLoginAlert(user, meta);
+  sendLoginAlert(user, meta);
   return { ...tokens, user };
 }
 

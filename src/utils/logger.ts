@@ -1,13 +1,17 @@
 import winston from 'winston';
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import { env } from '../config/env';
 
-const logsDir = path.join(__dirname, '../../logs');
 const isServerlessRuntime = Boolean(process.env.VERCEL) || Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME);
+const shouldUseFileLogs = !env.isProd && !isServerlessRuntime;
+const logsDir = shouldUseFileLogs
+  ? path.join(process.cwd(), 'logs')
+  : path.join(os.tmpdir(), 'neza-logs');
 
 let canWriteLogsToDisk = false;
-if (!isServerlessRuntime) {
+if (shouldUseFileLogs) {
   try {
     if (!fs.existsSync(logsDir)) {
       fs.mkdirSync(logsDir, { recursive: true });

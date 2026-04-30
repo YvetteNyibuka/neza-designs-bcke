@@ -11,6 +11,11 @@ import { logger } from './utils/logger';
 
 const app = express();
 
+// Required behind hosting proxies (Render/Vercel) so rate-limit uses real client IP.
+if (env.isProd) {
+  app.set('trust proxy', 1);
+}
+
 // Security headers
 app.use(helmet());
 

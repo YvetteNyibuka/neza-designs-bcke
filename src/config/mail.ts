@@ -1,19 +1,27 @@
 import nodemailer, { Transporter } from 'nodemailer';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { env } from './env';
 
 let transporter: Transporter;
 
 export function getMailTransporter(): Transporter {
   if (!transporter) {
-    transporter = nodemailer.createTransport({
+    const transportOptions: SMTPTransport.Options = {
       host: env.SMTP_HOST,
       port: env.SMTP_PORT,
       secure: env.SMTP_PORT === 465,
+      name: 'nezadesigns.com',
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
+      dnsTimeout: 5000,
       auth: {
         user: env.SMTP_USER,
         pass: env.SMTP_PASS,
       },
-    });
+    };
+
+    transporter = nodemailer.createTransport(transportOptions);
   }
   return transporter;
 }

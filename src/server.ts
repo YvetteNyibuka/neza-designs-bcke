@@ -1,7 +1,11 @@
+import dns from 'node:dns';
 import { env } from './config/env';
 import { connectDB } from './config/db';
 import { logger } from './utils/logger';
 import app from './app';
+
+// Render environments can lack outbound IPv6 routing; prefer IPv4 DNS results.
+dns.setDefaultResultOrder('ipv4first');
 
 async function start(): Promise<void> {
   await connectDB();
