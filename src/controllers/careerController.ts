@@ -7,6 +7,11 @@ export const getCareers = asyncHandler(async (req: Request, res: Response) => {
   const result = await careerService.getAllCareers(req.query as any);
   sendSuccess(res, 'Careers fetched', result);
 });
+ 
+ export const getCareersAdmin = asyncHandler(async (req: Request, res: Response) => {
+   const result = await careerService.getAllCareersAdmin(req.query as any);
+   sendSuccess(res, 'Careers fetched (admin view)', result);
+ });
 
 export const getCareer = asyncHandler(async (req: Request, res: Response) => {
   const career = await careerService.getCareerBySlug(req.params['slug'] as string);

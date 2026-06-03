@@ -19,7 +19,12 @@ export async function submitApplication(
     coverLetter?: string;
   }
 ): Promise<IJobApplication> {
-  const career = await Career.findOne({ slug: careerSlug, isDeleted: false, status: 'Open' }).lean();
+  const career = await Career.findOne({
+    slug: careerSlug,
+    isDeleted: false,
+    status: 'Open',
+    $or: [{ deadline: { $exists: false } }, { deadline: null }, { deadline: { $gte: new Date() } }],
+  }).lean();
   if (!career) throw new Error('Career not found or closed');
 
   return JobApplication.create({

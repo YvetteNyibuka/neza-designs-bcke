@@ -3,12 +3,14 @@ import { env } from './config/env';
 import { connectDB } from './config/db';
 import { logger } from './utils/logger';
 import app from './app';
+import { startCronJobs } from './services/cronService';
 
 // Render environments can lack outbound IPv6 routing; prefer IPv4 DNS results.
 dns.setDefaultResultOrder('ipv4first');
 
 async function start(): Promise<void> {
   await connectDB();
+  startCronJobs();
 
   const server = app.listen(env.PORT, () => {
     logger.info(`Server running on http://localhost:${env.PORT} [${env.NODE_ENV}]`);

@@ -1,18 +1,12 @@
 import mongoose, { Document, Schema } from 'mongoose';
 import { COLLECTIONS } from '../constants/collections';
 
-export type ProjectCategory =
-  | 'Architecture'
-  | 'Construction'
-  | 'Project Management'
-  | 'Land Acquisition';
-
 export type ProjectStatus = 'Completed' | 'Ongoing' | 'Handed Over' | 'Consulted';
 
 export interface IProject extends Document {
   slug: string;
   title: string;
-  category: ProjectCategory;
+  category: string;
   status: ProjectStatus;
   description: string;
   imageUrl: string;
@@ -28,16 +22,7 @@ const ProjectSchema = new Schema<IProject>(
   {
     slug: { type: String, required: true, unique: true, lowercase: true },
     title: { type: String, required: true, trim: true },
-    category: {
-      type: String,
-      required: true,
-      enum: [
-        'Architecture',
-        'Construction',
-        'Project Management',
-        'Land Acquisition',
-      ],
-    },
+    category: { type: String, required: true, trim: true },
     status: {
       type: String,
       required: true,

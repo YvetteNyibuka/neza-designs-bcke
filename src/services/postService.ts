@@ -4,6 +4,7 @@ import { parsePagination, buildPaginatedResult } from '../utils/pagination';
 import { destroyCloudinaryImageByUrl } from '../utils/cloudinaryImage';
 import { PaginatedResult, PaginationQuery } from '../types';
 import backupPosts from '../data-backup/posts.json';
+import { ensureBlogCategory } from './categoryService';
 
 interface PostQuery extends PaginationQuery {
   category?: string;
@@ -44,12 +45,18 @@ export async function createPost(input: Partial<IBlogPost>): Promise<IBlogPost> 
   if (!input.slug && input.title) {
     input.slug = await generateUniqueSlug(input.title);
   }
+  if (input.category) {
+    await ensureBlogCategory(input.category);
+  }
   return BlogPost.create(input);
 }
 
 export async function updatePost(slug: string, updates: Partial<IBlogPost>): Promise<IBlogPost | null> {
   if (updates.title && !updates.slug) {
     updates.slug = await generateUniqueSlug(updates.title, slug);
+  }
+  if (updates.category) {
+    await ensureBlogCategory(updates.category);
   }
   return BlogPost.findOneAndUpdate({ slug, isDeleted: false }, updates, { new: true, runValidators: true });
 }

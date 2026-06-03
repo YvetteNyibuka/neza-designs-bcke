@@ -9,6 +9,7 @@ import * as applicationController from '../../controllers/jobApplicationControll
 const router = Router();
 
 router.get('/', careerController.getCareers);
+router.get('/admin/all', authenticate, authorize(ROLES.ADMIN), careerController.getCareersAdmin);
 router.get('/:slug', careerController.getCareer);
 // Job applications (public submit)
 router.post('/:slug/apply', applicationController.applyForCareer);

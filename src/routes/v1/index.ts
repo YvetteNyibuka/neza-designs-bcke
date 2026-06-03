@@ -12,6 +12,7 @@ import healthRoutes from './health.routes';
 import careerRoutes from './career.routes';
 import publicationRoutes from './publication.routes';
 import newsletterRoutes from './newsletter.routes';
+import categoryRoutes from './category.routes';
 
 const v1Router = Router();
 
@@ -28,5 +29,6 @@ v1Router.use('/analytics', analyticsRoutes);
 v1Router.use('/careers', careerRoutes);
 v1Router.use('/publications', publicationRoutes);
 v1Router.use('/newsletter', newsletterRoutes);
+v1Router.use('/categories', categoryRoutes);
 
 export default v1Router;
