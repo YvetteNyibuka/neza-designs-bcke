@@ -1,13 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
 import { COLLECTIONS } from '../constants/collections';
 
-export type BlogPostCategory =
-  | 'Sustainability'
-  | 'Urbanization'
-  | 'Design Trends'
-  | 'Rwanda Projects'
-  | 'FEATURED INSIGHTS';
-
 export interface IBlogPostAuthor {
   name: string;
   role: string;
@@ -19,7 +12,7 @@ export interface IBlogPost extends Document {
   title: string;
   excerpt: string;
   content: string;
-  category: BlogPostCategory;
+  category: string;
   readTime: number;
   publishedAt: Date;
   imageUrl: string;
@@ -36,17 +29,7 @@ const BlogPostSchema = new Schema<IBlogPost>(
     title: { type: String, required: true, trim: true },
     excerpt: { type: String, required: true },
     content: { type: String, required: true },
-    category: {
-      type: String,
-      required: true,
-      enum: [
-        'Sustainability',
-        'Urbanization',
-        'Design Trends',
-        'Rwanda Projects',
-        'FEATURED INSIGHTS',
-      ],
-    },
+    category: { type: String, required: true, trim: true },
     readTime: { type: Number, required: true, min: 1 },
     publishedAt: { type: Date, required: true, default: Date.now },
     imageUrl: { type: String, required: true },

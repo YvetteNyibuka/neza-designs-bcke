@@ -4,6 +4,7 @@ import { parsePagination, buildPaginatedResult } from '../utils/pagination';
 import { destroyCloudinaryImageByUrl } from '../utils/cloudinaryImage';
 import { PaginatedResult, PaginationQuery } from '../types';
 import backupProjects from '../data-backup/projects.json';
+import { ensureProjectCategory } from './categoryService';
 
 interface ProjectQuery extends PaginationQuery {
   category?: string;
@@ -48,12 +49,18 @@ export async function createProject(input: Partial<IProject>): Promise<IProject>
   if (!input.slug && input.title) {
     input.slug = await generateUniqueSlug(input.title);
   }
+  if (input.category) {
+    await ensureProjectCategory(input.category);
+  }
   return Project.create(input);
 }
 
 export async function updateProject(slug: string, updates: Partial<IProject>): Promise<IProject | null> {
   if (updates.title && !updates.slug) {
     updates.slug = await generateUniqueSlug(updates.title, slug);
+  }
+  if (updates.category) {
+    await ensureProjectCategory(updates.category);
   }
   return Project.findOneAndUpdate({ slug, isDeleted: false }, updates, { new: true, runValidators: true });
 }

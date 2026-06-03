@@ -1,12 +1,12 @@
 import { PaginationQuery, PaginatedResult } from '../types';
 
-export function parsePagination(query: PaginationQuery): {
+export function parsePagination(query?: PaginationQuery): {
   page: number;
   limit: number;
   skip: number;
 } {
-  const page = Math.max(1, parseInt(query.page || '1', 10));
-  const limit = Math.min(100, Math.max(1, parseInt(query.limit || '10', 10)));
+  const page = Math.max(1, parseInt(query?.page || '1', 10));
+  const limit = Math.min(100, Math.max(1, parseInt(query?.limit || '10', 10)));
   const skip = (page - 1) * limit;
   return { page, limit, skip };
 }

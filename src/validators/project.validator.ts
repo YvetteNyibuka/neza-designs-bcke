@@ -1,18 +1,11 @@
 import { z } from 'zod';
 
-const PROJECT_CATEGORIES = [
-  'Architecture',
-  'Construction',
-  'Project Management',
-  'Land Acquisition',
-] as const;
-
 const PROJECT_STATUSES = ['Completed', 'Ongoing', 'Handed Over', 'Consulted'] as const;
 
 export const createProjectSchema = z.object({
   slug: z.string().min(1).toLowerCase().optional(),
   title: z.string().min(2).max(200),
-  category: z.enum(PROJECT_CATEGORIES),
+  category: z.string().min(2).max(100),
   status: z.enum(PROJECT_STATUSES).default('Completed'),
   description: z.string().min(10),
   imageUrl: z.string().url().optional(),

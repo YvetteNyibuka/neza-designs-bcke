@@ -54,5 +54,7 @@ const CareerSchema = new Schema<ICareer>(
 
 CareerSchema.index({ isDeleted: 1, status: 1 });
 CareerSchema.index({ department: 1 });
+CareerSchema.index({ deadline: 1 });
+CareerSchema.index({ isDeleted: 1, deadline: 1 });
 
 export const Career = mongoose.model<ICareer>('Career', CareerSchema);

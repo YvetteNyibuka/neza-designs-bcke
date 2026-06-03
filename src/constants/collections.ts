@@ -11,4 +11,7 @@ export const COLLECTIONS = {
     JOB_APPLICATIONS: 'jobapplications',
   OTPS: 'otps',
   SITE_SETTINGS: 'sitesettings',
+  CAREER_CATEGORIES: 'careercategories',
+  BLOG_CATEGORIES: 'blogcategories',
+  PROJECT_CATEGORIES: 'projectcategories',
 } as const;
