@@ -1,6 +1,12 @@
 node_modules/
 dist/
 .env
+.env.production
 *.log
 logs/
 src/logs/
+
+# Server-only files — never commit these
+deploy.sh
+ecosystem.config.js
+nginx/
