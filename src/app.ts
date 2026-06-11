@@ -21,7 +21,7 @@ app.use(helmet());
 // CORS
 app.use(
   cors({
-    origin: [env.CLIENT_URL, 'http://localhost:3000', 'http://localhost:3001', 'https://neza-designs-bcke.vercel.app', 'https://nezadesigns.netlify.app'],
+    origin: [env.CLIENT_URL, 'https://neeza.rw', 'https://www.neeza.rw', 'http://localhost:3000', 'http://localhost:3001'],
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
