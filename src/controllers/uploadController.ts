@@ -36,6 +36,29 @@ export const fileUpload = multer({
   },
 });
 
+// Mixed uploader for publications: accepts coverImage (image) + file (PDF/Word)
+export const publicationUpload = multer({
+  storage,
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
+  fileFilter: (_req, file, cb) => {
+    const allowedImages = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+    const allowedDocs = [
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    ];
+    if (file.fieldname === 'coverImage') {
+      if (allowedImages.includes(file.mimetype)) cb(null, true);
+      else cb(new Error('Cover image must be JPEG, PNG, WebP, or GIF'));
+    } else if (file.fieldname === 'file') {
+      if (allowedDocs.includes(file.mimetype)) cb(null, true);
+      else cb(new Error('Publication file must be a PDF or Word document'));
+    } else {
+      cb(new Error('Unexpected file field'));
+    }
+  },
+});
+
 export const uploadSingle = asyncHandler(async (req: Request, res: Response) => {
   if (!req.file) {
     sendBadRequest(res, 'No file provided');
