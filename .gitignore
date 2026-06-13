@@ -2,6 +2,8 @@ node_modules/
 dist/
 .env
 .env.production
+mongo_backup/
+src/scripts/seed-admin.ts
 *.log
 logs/
 src/logs/

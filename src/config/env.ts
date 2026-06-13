@@ -33,6 +33,11 @@ export const env = {
   SEED_ADMIN_EMAIL: process.env.SEED_ADMIN_EMAIL || 'admin@nezadesigns.com',
   SEED_ADMIN_PASSWORD: process.env.SEED_ADMIN_PASSWORD || 'Admin@1234!',
 
+  SEED_ADMIN1_EMAIL: process.env.SEED_ADMIN1_EMAIL || '',
+  SEED_ADMIN1_PASSWORD: process.env.SEED_ADMIN1_PASSWORD || '',
+  SEED_ADMIN2_EMAIL: process.env.SEED_ADMIN2_EMAIL || '',
+  SEED_ADMIN2_PASSWORD: process.env.SEED_ADMIN2_PASSWORD || '',
+
   OTP_EXPIRES_IN_MINUTES: parseInt(process.env.OTP_EXPIRES_IN_MINUTES || '5', 10),
   OTP_MAX_ATTEMPTS: parseInt(process.env.OTP_MAX_ATTEMPTS || '3', 10),
 
