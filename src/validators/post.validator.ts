@@ -1,5 +1,11 @@
 import { z } from 'zod';
 
+const urlOrLocalPath = z
+  .string()
+  .refine((val) => val.startsWith('http://') || val.startsWith('https://') || val.startsWith('/uploads/'), {
+    message: 'Must be a valid URL or local upload path',
+  });
+
 export const createPostSchema = z.object({
   slug: z.string().min(1).toLowerCase().optional(),
   title: z.string().min(5).max(300),
@@ -8,11 +14,11 @@ export const createPostSchema = z.object({
   category: z.string().min(2).max(100),
   readTime: z.number().int().min(1).max(120),
   publishedAt: z.string().datetime().optional(),
-  imageUrl: z.string().url().optional(),
+  imageUrl: urlOrLocalPath.optional(),
   author: z.object({
     name: z.string().min(2),
     role: z.string().min(2),
-    avatarUrl: z.string().url().optional(),
+    avatarUrl: urlOrLocalPath.optional(),
   }),
   tags: z.array(z.string()).optional().default([]),
 });

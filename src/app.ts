@@ -1,36 +1,45 @@
-import express from 'express';
+import express, { Express } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+import path from 'path';
 import { env } from './config/env';
 import v1Router from './routes/v1';
 import { errorHandler } from './middlewares/errorHandler';
 import { apiLimiter } from './middlewares/rateLimiter';
 import { logger } from './utils/logger';
 
-const app = express();
+const app: Express = express();
 
 // This API is deployed behind reverse proxies (Render/Vercel),
 // and rate limiter depends on forwarded client IPs.
 app.set('trust proxy', 1);
 
-// Security headers
-app.use(helmet());
+// Security headers (disabled crossOriginResourcePolicy to allow CORS)
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+  })
+);
 
-// CORS
+// CORS — must come after helmet
 app.use(
   cors({
     origin: [env.CLIENT_URL, 'https://neeza.rw', 'https://www.neeza.rw', 'http://localhost:3000', 'http://localhost:3001'],
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    maxAge: 86400,
   })
 );
 
+// Static file serving for uploaded media
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), { maxAge: '1d' }));
+
 // Body parsing
-app.use(express.json({ limit: '5mb' }));
-app.use(express.urlencoded({ extended: true, limit: '5mb' }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
 // Logging

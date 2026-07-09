@@ -6,11 +6,17 @@ const featureSchema = z.object({
   icon: z.string().min(1),
 });
 
+const urlOrLocalPath = z
+  .string()
+  .refine((val) => val.startsWith('http://') || val.startsWith('https://') || val.startsWith('/uploads/'), {
+    message: 'Must be a valid URL or local upload path',
+  });
+
 export const createServiceSchema = z.object({
   title: z.string().min(2).max(200),
   shortDescription: z.string().min(10).max(300),
   features: z.array(featureSchema).min(1).max(20),
-  imageUrl: z.string().url().optional(),
+  imageUrl: urlOrLocalPath.optional(),
   buttonTitle: z.string().default('Learn More'),
   order: z.number().int().min(0).optional().default(0),
 });

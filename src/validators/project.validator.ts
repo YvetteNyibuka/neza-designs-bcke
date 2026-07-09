@@ -7,8 +7,16 @@ export const createProjectSchema = z.object({
   title: z.string().min(2).max(200),
   category: z.string().min(2).max(100),
   status: z.enum(PROJECT_STATUSES).default('Completed'),
-  description: z.string().min(10),
-  imageUrl: z.string().url().optional(),
+  description: z
+    .string()
+    .min(10, 'Must be at least 10 characters')
+    .optional()
+    .or(z.literal('')),
+  imageUrl: z
+    .string()
+    .refine((val) => val.startsWith('http://') || val.startsWith('https://') || val.startsWith('/uploads/'), {
+      message: 'Must be a valid URL or local upload path',
+    }),
   location: z.string().optional(),
   completionYear: z.number().int().min(1900).max(2100).optional(),
   client: z.string().optional(),

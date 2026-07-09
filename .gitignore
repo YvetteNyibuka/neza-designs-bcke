@@ -3,6 +3,7 @@ dist/
 .env
 .env.production
 mongo_backup/
+uploads/
 src/scripts/seed-admin.ts
 *.log
 logs/
