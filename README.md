@@ -2,7 +2,7 @@
 
 Backend API for the Neza Designs website.
 
-Built with Node.js, Express, TypeScript, MongoDB, Cloudinary, and Nodemailer.
+Built with Node.js, Express, TypeScript, MongoDB, and Nodemailer. Media is stored locally in `uploads/`.
 
 ## Quick Start
 
