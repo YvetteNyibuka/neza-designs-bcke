@@ -8,7 +8,7 @@ export interface IProject extends Document {
   title: string;
   category: string;
   status: ProjectStatus;
-  description: string;
+  description?: string;
   imageUrl: string;
   location?: string;
   completionYear?: number;
@@ -29,7 +29,7 @@ const ProjectSchema = new Schema<IProject>(
       enum: ['Completed', 'Ongoing', 'Handed Over', 'Consulted'],
       default: 'Completed',
     },
-    description: { type: String, required: true },
+    description: { type: String },
     imageUrl: { type: String, required: true },
     location: { type: String },
     completionYear: { type: Number },

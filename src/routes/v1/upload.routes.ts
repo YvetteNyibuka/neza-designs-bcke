@@ -1,14 +1,22 @@
 import { Router } from 'express';
-import { upload, uploadSingle, fileUpload, uploadFileSingle, deleteImageHandler } from '../../controllers/uploadController';
+import {
+  upload,
+  uploadMiddleware,
+  uploadSingle,
+  fileUpload,
+  fileUploadMiddleware,
+  uploadFileSingle,
+  deleteImageHandler,
+} from '../../controllers/uploadController';
 import { authenticate, authorize } from '../../middlewares/authenticate';
 import { ROLES } from '../../constants/roles';
 
 const router = Router();
 
-router.post('/image', authenticate, authorize(ROLES.ADMIN), upload.single('image'), uploadSingle);
+router.post('/image', authenticate, authorize(ROLES.ADMIN), upload, uploadMiddleware, uploadSingle);
 router.delete('/image', authenticate, authorize(ROLES.ADMIN), deleteImageHandler);
 
 // Public file upload — used by job applicants uploading CV/cover letter
-router.post('/file', fileUpload.single('file'), uploadFileSingle);
+router.post('/file', fileUpload, fileUploadMiddleware, uploadFileSingle);
 
 export default router;
