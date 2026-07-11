@@ -13,6 +13,7 @@ export interface IProject extends Document {
   location?: string;
   completionYear?: number;
   client?: string;
+  featured: boolean;
   isDeleted: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -34,6 +35,7 @@ const ProjectSchema = new Schema<IProject>(
     location: { type: String },
     completionYear: { type: Number },
     client: { type: String },
+    featured: { type: Boolean, default: false },
     isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true, collection: COLLECTIONS.PROJECTS }

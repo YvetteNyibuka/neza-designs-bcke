@@ -10,7 +10,6 @@
     "seed:user": "ts-node src/scripts/seed-user.ts",
     "verify:user": "ts-node src/scripts/verify-user.ts",
     "debug:password": "ts-node src/scripts/debug-password.ts",
-    "seed:content": "ts-node src/scripts/seed-content.ts",
     "seed:categories": "ts-node src/scripts/seed-categories.ts",
     "type-check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -20,6 +20,7 @@ export const createProjectSchema = z.object({
   location: z.string().optional(),
   completionYear: z.number().int().min(1900).max(2100).optional(),
   client: z.string().optional(),
+  featured: z.boolean().optional().default(false),
 });
 
 export const updateProjectSchema = createProjectSchema.partial();

@@ -1,10 +1,8 @@
 import { Service, IService } from '../models/Service';
 import { destroyCloudinaryImageByUrl } from '../utils/cloudinaryImage';
-import backupServices from '../data-backup/services.json';
 
 export async function getAllServices(): Promise<IService[]> {
   const services = await Service.find({ isDeleted: false }).sort({ order: 1 }).lean();
-  if (services.length === 0) return backupServices as unknown as IService[];
   return services as unknown as IService[];
 }
 

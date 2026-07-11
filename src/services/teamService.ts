@@ -1,10 +1,8 @@
 import { TeamMember, ITeamMember } from '../models/TeamMember';
 import { destroyCloudinaryImageByUrl } from '../utils/cloudinaryImage';
-import backupTeam from '../data-backup/team.json';
 
 export async function getAllTeamMembers(): Promise<ITeamMember[]> {
   const members = await TeamMember.find({ isDeleted: false }).sort({ order: 1 }).lean();
-  if (members.length === 0) return backupTeam as unknown as ITeamMember[];
   return members as unknown as ITeamMember[];
 }
 

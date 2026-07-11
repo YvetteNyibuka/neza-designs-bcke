@@ -3,7 +3,6 @@ import { slugify } from '../utils/slugify';
 import { parsePagination, buildPaginatedResult } from '../utils/pagination';
 import { destroyCloudinaryImageByUrl } from '../utils/cloudinaryImage';
 import { PaginatedResult, PaginationQuery } from '../types';
-import backupPosts from '../data-backup/posts.json';
 import { ensureBlogCategory } from './categoryService';
 
 interface PostQuery extends PaginationQuery {
@@ -21,24 +20,11 @@ export async function getAllPosts(query: PostQuery): Promise<PaginatedResult<IBl
     BlogPost.countDocuments(filter),
   ]);
 
-  if (total === 0) {
-    const filtered = backupPosts.filter((p) => {
-      if (query.category && p.category !== query.category) return false;
-      return true;
-    });
-    return buildPaginatedResult(filtered as unknown as IBlogPost[], filtered.length, 1, filtered.length || 10);
-  }
-
   return buildPaginatedResult(data as unknown as IBlogPost[], total, page, limit);
 }
 
 export async function getPostBySlug(slug: string): Promise<IBlogPost | null> {
-  const post = await BlogPost.findOne({ slug, isDeleted: false }).lean();
-  if (!post) {
-    const backup = backupPosts.find((p) => p.slug === slug);
-    return backup as unknown as IBlogPost | null;
-  }
-  return post as unknown as IBlogPost;
+  return BlogPost.findOne({ slug, isDeleted: false }).lean() as unknown as IBlogPost | null;
 }
 
 export async function createPost(input: Partial<IBlogPost>): Promise<IBlogPost> {

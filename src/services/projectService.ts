@@ -3,7 +3,6 @@ import { slugify } from '../utils/slugify';
 import { parsePagination, buildPaginatedResult } from '../utils/pagination';
 import { destroyCloudinaryImageByUrl } from '../utils/cloudinaryImage';
 import { PaginatedResult, PaginationQuery } from '../types';
-import backupProjects from '../data-backup/projects.json';
 import { ensureProjectCategory } from './categoryService';
 
 interface ProjectQuery extends PaginationQuery {
@@ -19,30 +18,15 @@ export async function getAllProjects(query: ProjectQuery): Promise<PaginatedResu
   if (query.search) filter.title = { $regex: query.search, $options: 'i' };
 
   const [data, total] = await Promise.all([
-    Project.find(filter).skip(skip).limit(limit).sort({ createdAt: -1 }).lean(),
+    Project.find(filter).skip(skip).limit(limit).sort({ featured: -1, createdAt: -1 }).lean(),
     Project.countDocuments(filter),
   ]);
-
-  if (total === 0) {
-    // Return backup data
-    const filtered = backupProjects.filter((p) => {
-      if (query.category && p.category !== query.category) return false;
-      if (query.status && p.status !== query.status) return false;
-      return true;
-    });
-    return buildPaginatedResult(filtered as unknown as IProject[], filtered.length, 1, filtered.length || 10);
-  }
 
   return buildPaginatedResult(data as unknown as IProject[], total, page, limit);
 }
 
 export async function getProjectBySlug(slug: string): Promise<IProject | null> {
-  const project = await Project.findOne({ slug, isDeleted: false }).lean();
-  if (!project) {
-    const backup = backupProjects.find((p) => p.slug === slug);
-    return backup as unknown as IProject | null;
-  }
-  return project as unknown as IProject;
+  return Project.findOne({ slug, isDeleted: false }).lean() as unknown as IProject | null;
 }
 
 export async function createProject(input: Partial<IProject>): Promise<IProject> {

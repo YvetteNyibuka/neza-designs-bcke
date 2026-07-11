@@ -121,7 +121,7 @@ export const uploadSingle = asyncHandler(async (req: Request, res: Response) => 
   }
 
   const folder = (req.query.folder as string) || 'general';
-  const result = await uploadImage(req.file.buffer, folder);
+  const result = await uploadImage(req.file.buffer, folder, req.file.originalname);
   sendSuccess(res, 'Image uploaded', result);
 });
 
